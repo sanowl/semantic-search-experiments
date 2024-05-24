@@ -41,7 +41,7 @@ def compute_idf(documents):
 def normalize_vector(vector):
     """Normalizes a vector to have unit length."""
     magnitude = sum(value**2 for value in vector.values()) ** 0.5
-    if magnitude == 0:  
+    if math.isclose(magnitude, 0, rel_tol=1e-09, abs_tol=0.0):  
         return vector  
     return {term: value / magnitude for term, value in vector.items()}
 
